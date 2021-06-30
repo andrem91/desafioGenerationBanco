@@ -1,6 +1,8 @@
 programa
 {
-	
+	funcao contaPoupanca(){
+		
+	}
 	funcao inicio()
 	{
 		escreva("Olá Mundo")
@@ -11,7 +13,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 12; 
+ * @POSICAO-CURSOR = 33; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
