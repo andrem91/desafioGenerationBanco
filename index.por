@@ -1,5 +1,6 @@
 programa
 {
+	inclua biblioteca Util
 
 	inclua biblioteca Matematica
 	
@@ -25,9 +26,54 @@ programa
 	// ======== Fim Conta ========
 	// ======== Conta Poupança ========
 	
-
+	
 	
 	// ======== Fim Conta Poupança ========
+	// ======== Conta Corrente ========
+	const inteiro LIMITE_TALAO = 3
+	const real CUSTO_TALAO = 10.00
+	inteiro talao = 0
+	caracter pedirTalao = 'S'
+	
+	funcao contaCorrente(){
+		enquanto (pedirTalao == 's' ou pedirTalao == 'S'){
+			limpa()
+			mostrarSaldo()
+			escreva("\nTALÕES DE CHEQUE\n")
+			escreva("\nTalões pedidos: " + talao + "\nlimites de talão no mês: " + LIMITE_TALAO)
+			escreva("\nCusto: R$" + CUSTO_TALAO)
+			escreva("\nDeseja pedir um talão de cheque?S/N: ")
+			leia(pedirTalao)
+			limpa()
+			se (CUSTO_TALAO <= saldo){
+				se ((pedirTalao == 's' ou pedirTalao == 'S')){
+					talao++
+					debito(CUSTO_TALAO)
+					escreva ("Fazendo pedido de talão\n")
+					escreva ("Debitando em conta...\n")
+					Util.aguarde(2000)
+					escreva ("Compra finalizada\n")
+					Util.aguarde(1000)
+					se (talao >= LIMITE_TALAO){
+						escreva ("Limite de talões atingido\n")
+						escreva ("Finalizando operação...\n")
+						Util.aguarde(2000)
+						pare
+					}
+				}
+			} senao {
+				escreva ("Não há saldo em conta para comprar talão de cheque\n")
+				escreva ("Finalizando operação...\n")
+				Util.aguarde(2000)
+				pare
+			}
+		}
+		limpa()
+		escreva ("Finalizando módulo de cheque...")
+		Util.aguarde(2000)
+	}
+	
+	// ======== Fim Conta Corrente ========
 	// ======== Conta Especial ========
 
 	
@@ -100,7 +146,7 @@ programa
 				leia(valor)
 				credito(valor)
 			} senao {
-				escreva("Opção invalida")
+				escreva("Opção invalida\n")
 			}
 			mostrarSaldo()
 
@@ -113,6 +159,11 @@ programa
 			escreva("Continuar S/N: ")
 			leia(continuar)
 		}
+		// ==== Conta Corrente ====
+		se (codigo == 2){
+			contaCorrente()
+		}
+		// ==== Fim Corrente ====
 	}
 	// ======== Fim do programa ========
 }
@@ -121,7 +172,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1820; 
+ * @POSICAO-CURSOR = 3565; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
