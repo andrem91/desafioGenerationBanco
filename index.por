@@ -5,11 +5,28 @@ programa
 	inclua biblioteca Matematica
 	
 	// ======== Conta ========
-	inteiro numero = 0
+	inteiro numero = 0, contadorOperacoes = 0
 	real saldo = 0.00
+	inteiro codigo = 0
+	const cadeia contas[] = {"CONTA POUPANÇA", "CONTA CORRENTE", "CONTA ESPECIAL", "CONTA EMPRESA", "CONTA ESTUDANTIL"}
 
 	funcao mostrarSaldo() {
 		escreva("Saldo atual: R$" + saldo + "\n")
+	}
+
+	funcao despedida(){
+		limpa()
+		mostrarSaldo()
+		escreva ("Saindo da Conta...\n")
+		Util.aguarde(2000)
+		limpa()
+		escreva ("Finalizado\nAgradecemos a prefência\nVolte Sempre")
+		Util.aguarde(1000)
+	}
+	
+	funcao mostrarConta(inteiro codigoConta) {
+		escreva(" ===== " + contas[codigoConta - 1] + "=====")
+		escreva("\nOperações realizadas: "+ contadorOperacoes + "\n")
 	}
 
 	
@@ -110,7 +127,7 @@ programa
 	// ======== Inicio do programa ========
 	funcao inicio() {
 
-		inteiro codigo = 0
+		
 		caracter continuar = 'S'
 		caracter operacao
 		real valor = 0.0
@@ -132,8 +149,9 @@ programa
 			}
 		} enquanto (codigo < 1 ou codigo > 6)
 		
-		enquanto (continuar != 'N' e continuar != 'n' e codigo != 6) {
+		enquanto (continuar != 'N' e continuar != 'n' e codigo != 6 e contadorOperacoes < 10) {
 			limpa()
+			mostrarConta(codigo)
 			mostrarSaldo()
 			escreva("MOVIMENTO - D-debito ou C-Crédito: ")
 			leia(operacao)
@@ -148,6 +166,7 @@ programa
 			} senao {
 				escreva("Opção invalida\n")
 			}
+			contadorOperacoes++
 			mostrarSaldo()
 
 			// ===== Conta Empresa =====
@@ -155,7 +174,13 @@ programa
 				contaEmpresa()
 			}
 			// ===== Conta Empresa =====
-			
+			se (contadorOperacoes >= 10){
+				limpa()
+				mostrarSaldo()
+				escreva ("limite de operações atingido\n")
+				Util.aguarde(2000)
+				pare
+			}
 			escreva("Continuar S/N: ")
 			leia(continuar)
 		}
@@ -164,6 +189,7 @@ programa
 			contaCorrente()
 		}
 		// ==== Fim Corrente ====
+		despedida()
 	}
 	// ======== Fim do programa ========
 }
@@ -172,7 +198,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 599; 
+ * @POSICAO-CURSOR = 416; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
