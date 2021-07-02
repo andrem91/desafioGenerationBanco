@@ -31,7 +31,7 @@ programa
 	// ======== Fim Conta Poupança ========
 	// ======== Conta Corrente ========
 	const inteiro LIMITE_TALAO = 3
-	const real CUSTO_TALAO = 10.00
+	const real CUSTO_TALAO = 30.00
 	inteiro talao = 0
 	caracter pedirTalao = 'S'
 	
@@ -172,7 +172,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3565; 
+ * @POSICAO-CURSOR = 599; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
