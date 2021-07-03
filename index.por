@@ -25,7 +25,7 @@ programa
 	}
 	
 	funcao mostrarConta(inteiro codigoConta) {
-		escreva(" ===== " + contas[codigoConta - 1] + "=====")
+		escreva(" ===== " + contas[codigoConta - 1] + " =====")
 		escreva("\nOperações realizadas: "+ contadorOperacoes + "\n")
 	}
 
@@ -119,9 +119,31 @@ programa
 	}
 	// ======== Fim Conta Empresa ========
 	// ======== Conta Estudantil ========
+			
+		real valorMaximoEstudantil=5000.00, valorSolicitado=0.0
+		caracter usarEmprestimo
+				
+		funcao contaEstudantil ()
+		{
+			escreva("Caro estudante, você tem R$ " +valorMaximoEstudantil+ " liberados para empréstimo.\n")
+			escreva("Deseja utilizar(S/N)?: ") 
+			leia(usarEmprestimo)
 
-
-
+			se(usarEmprestimo == 'S' ou usarEmprestimo == 's') {
+			escreva("Valor do emprestimo: R$")
+			leia(valorSolicitado)
+			se (valorSolicitado <= valorMaximoEstudantil) {
+				saldo += valorSolicitado
+				valorMaximoEstudantil -= valorSolicitado
+			} senao {
+				escreva("Valor invalido. Emprestimo não concluido.\n")
+				escreva("Caro estudante, o valor solicitado é maior que o disponivel.\n")
+			}
+			mostrarSaldo()
+			
+			}
+		}
+		
 	// ======== Fim Conta Estudantil ========
 
 	// ======== Inicio do programa ========
@@ -169,11 +191,18 @@ programa
 			contadorOperacoes++
 			mostrarSaldo()
 
-			// ===== Conta Empresa =====
+			// ===== Inicio Conta Empresa =====
 			se(codigo == 4) {
 				contaEmpresa()
 			}
-			// ===== Conta Empresa =====
+
+			// ===== Fim Conta Empresa =====
+			// ===== Inicio conta Estudantil ====
+			se(codigo == 5){
+				contaEstudantil()
+			}
+			//===== Fim conta Estudantil ====	
+			
 			se (contadorOperacoes >= 10){
 				limpa()
 				mostrarSaldo()
@@ -183,14 +212,19 @@ programa
 			}
 			escreva("Continuar S/N: ")
 			leia(continuar)
+
 		}
+
+			
 		// ==== Conta Corrente ====
 		se (codigo == 2){
 			contaCorrente()
 		}
 		// ==== Fim Corrente ====
 		despedida()
+	
 	}
+		
 	// ======== Fim do programa ========
 }
 /* $$$ Portugol Studio $$$ 
@@ -198,7 +232,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 416; 
+ * @POSICAO-CURSOR = 738; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
