@@ -9,25 +9,31 @@ programa
 	inteiro numero = 0, contadorOperacoes = 0
 	real saldo = 0.00
 	inteiro codigo = 0
-	const cadeia contas[] = {"CONTA POUPANÇA", "CONTA CORRENTE", "CONTA ESPECIAL", "CONTA EMPRESA", "CONTA ESTUDANTIL"}
+	const cadeia CONTAS[] = {"CONTA POUPANÇA", "CONTA CORRENTE", "CONTA ESPECIAL", "CONTA EMPRESA", "CONTA ESTUDANTIL"}
 
 	funcao mostrarSaldo() {
 		escreva("Saldo atual: R$" + saldo + "\n")
 
 	}
 
+	funcao logo(){
+		escreva (">>>>>>>>>> G1 GENERATION BRASIL <<<<<<<<<<\n")
+		escreva ("\tBuscando um futuro melhor\n\n\n")
+	}
+	
 	funcao despedida(){
 		limpa()
+		logo()
 		mostrarSaldo()
-		escreva ("Saindo da Conta...\n")
 		Util.aguarde(2000)
 		limpa()
+		logo()
 		escreva ("Finalizado\nAgradecemos a prefência\nVolte Sempre")
 		Util.aguarde(1000)
 	}
 	
 	funcao mostrarConta(inteiro codigoConta) {
-		escreva(" ===== " + contas[codigoConta - 1] + " =====")
+		escreva(" ===== " + CONTAS[codigoConta - 1] + " =====")
 		escreva("\nOperações realizadas: "+ contadorOperacoes + "\n")
 	}
 
@@ -98,7 +104,7 @@ programa
 				pare
 			
 			}senao{
-				escreva("\nEntrada inválida! Por favor, informe uma entrada válida.\n")
+				escreva("\nEntrada inválida! Por favor, informe uma entrada válida.\n\n")
 				Util.aguarde(1500)
 			}
 			
@@ -116,6 +122,7 @@ programa
 	funcao contaCorrente(){
 		enquanto (pedirTalao == 's' ou pedirTalao == 'S'){
 			limpa()
+			logo()
 			mostrarSaldo()
 			escreva("\nTALÕES DE CHEQUE\n")
 			escreva("\nTalões pedidos: " + talao + "\nlimites de talão no mês: " + LIMITE_TALAO)
@@ -123,6 +130,7 @@ programa
 			escreva("\nDeseja pedir um talão de cheque?S/N: ")
 			leia(pedirTalao)
 			limpa()
+			logo()
 			se (CUSTO_TALAO <= saldo){
 				se ((pedirTalao == 's' ou pedirTalao == 'S')){
 					talao++
@@ -147,6 +155,7 @@ programa
 			}
 		}
 		limpa()
+		logo()
 		escreva ("Finalizando módulo de cheque...")
 		Util.aguarde(2000)
 	}
@@ -214,80 +223,91 @@ programa
 		real valor = 0.0
 		
 		faca {
-
+			saldo = 0.00
+			contadorOperacoes = 0
+			continuar = 'S'
+			limpa()
+			logo()
 			escreva("1 - CONTA POUPANÇA\n")
 			escreva("2 - CONTA CORRENTE\n")
 			escreva("3 - CONTA ESPECIAL\n")
 			escreva("4 - CONTA EMPRESA\n")
 			escreva("5 - CONTA ESTUDANTIL\n")
-			escreva("6 - SAIR\n")
+			escreva("6 - SAIR\n\n")
 	
 			escreva("DIGITE O CODIGO DA OPÇÃO SELECIONADA: ")
 			leia(codigo)
 			se (codigo < 1 ou codigo > 6){
 				limpa()
+				logo()
 				escreva ("Opção invalida\n")
 			}
-		} enquanto (codigo < 1 ou codigo > 6)
 		
-		enquanto (continuar != 'N' e continuar != 'n' e codigo != 6 e contadorOperacoes < 10) {
-			limpa()
-			mostrarConta(codigo)
-			mostrarSaldo()
-			escreva("MOVIMENTO - D-debito ou C-Crédito: ")
-			leia(operacao)
-			se(operacao == 'D' ou operacao == 'd') {
-				escreva("Debitar: R$")
-				leia(valor)
-				debito(valor)
-			} senao se(operacao == 'C' ou operacao == 'c') {
-				escreva("Creditar: R$")
-				leia(valor)
-				credito(valor)
-			} senao {
-				escreva("Opção invalida\n")
-			}
-			contadorOperacoes++
-			mostrarSaldo()
-			// ==== Conta Poupança ====
-			se(codigo == 1) {
-				contaPoupanca()
-			}
-
-			// ==== Fim Poupança ====
-			
-
-			// ===== Inicio Conta Empresa =====
-			se(codigo == 4) {
-				contaEmpresa()
-			}
-
-			// ===== Fim Conta Empresa =====
-			// ===== Inicio conta Estudantil ====
-			se(codigo == 5){
-				contaEstudantil()
-			}
-			//===== Fim conta Estudantil ====	
-			
-			se (contadorOperacoes >= 10){
+			enquanto (continuar != 'N' e continuar != 'n' e codigo != 6 e contadorOperacoes < 10) {
 				limpa()
+				logo()
+				mostrarConta(codigo)
 				mostrarSaldo()
-				escreva ("limite de operações atingido\n")
-				Util.aguarde(2000)
-				pare
+				escreva("MOVIMENTO - D-debito ou C-Crédito: ")
+				leia(operacao)
+				se(operacao == 'D' ou operacao == 'd') {
+					escreva("Debitar: R$")
+					leia(valor)
+					debito(valor)
+				} senao se(operacao == 'C' ou operacao == 'c') {
+					escreva("Creditar: R$")
+					leia(valor)
+					credito(valor)
+				} senao {
+					escreva("Opção invalida\n")
+				}
+				contadorOperacoes++
+				mostrarSaldo()
+				// ==== Conta Poupança ====
+				se(codigo == 1) {
+					contaPoupanca()
+				}
+	
+				// ==== Fim Poupança ====
+				
+	
+				// ===== Inicio Conta Empresa =====
+				se(codigo == 4) {
+					contaEmpresa()
+				}
+	
+				// ===== Fim Conta Empresa =====
+				// ===== Inicio conta Estudantil ====
+				se(codigo == 5){
+					contaEstudantil()
+				}
+				//===== Fim conta Estudantil ====	
+				
+				se (contadorOperacoes >= 10){
+					limpa()
+					logo()
+					mostrarSaldo()
+					escreva ("limite de operações atingido\n")
+					Util.aguarde(2000)
+					pare
+				}
+				escreva("Continuar S/N: ")
+				leia(continuar)
+	
 			}
-			escreva("Continuar S/N: ")
-			leia(continuar)
+	
+				
+			// ==== Conta Corrente ====
+			se (codigo == 2){
+				contaCorrente()
+			}
+			// ==== Fim Corrente ====
 
-		}
-
-			
-		// ==== Conta Corrente ====
-		se (codigo == 2){
-			contaCorrente()
-		}
-		// ==== Fim Corrente ====
-
+			limpa()
+			escreva ("Saindo da Conta...\n")
+			Util.aguarde(2000)
+		} enquanto (codigo != 6)
+		
 		despedida()
 	
 	}
@@ -299,7 +319,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 5377; 
+ * @POSICAO-CURSOR = 3284; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
