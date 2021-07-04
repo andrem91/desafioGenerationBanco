@@ -162,7 +162,33 @@ programa
 	
 	// ======== Fim Conta Corrente ========
 	// ======== Conta Especial ========
+		real limiteEspecial=1000.0
+		
 
+		
+		funcao contaEspecial(real valor) {
+			
+			escreva("Saldo em conta insuficiente para realizar a operação.\n")
+			
+			se(valor <= saldo + limiteEspecial){
+				
+				escreva("Utilizando " + (valor - saldo) + " do limite especial.\n")
+				limiteEspecial-=(valor - saldo)
+				debito(saldo)
+			}
+			senao{
+				escreva("Seu limite é insuficiente.")
+				
+			}
+			escreva("Seu limite atual é R$ "+ limiteEspecial +".\n")
+			 //se(aceitarLimite == 'S' ou aceitarLimite == 's') {
+			//escreva("Agora você pode usar o seu Limite R$\n")
+				
+			
+		//escreva("Seu saldo atual agora é de " +limiteEspecial+ " utilizados da sua conta Especial.\n")
+		//}
+			
+		}
 	
 	
 	// ======== Fim Conta Especial ========
@@ -212,6 +238,7 @@ programa
 		mostrarSaldo()
 		
 		}
+		
 	}
 		
 	// ======== Fim Conta Estudantil ========
@@ -223,6 +250,9 @@ programa
 		real valor = 0.0
 		
 		faca {
+			pedirTalao = 'S'
+			limiteEspecial=1000
+			talao=0
 			saldo = 0.00
 			contadorOperacoes = 0
 			continuar = 'S'
@@ -253,7 +283,13 @@ programa
 				se(operacao == 'D' ou operacao == 'd') {
 					escreva("Debitar: R$")
 					leia(valor)
-					debito(valor)
+					se (codigo ==3 e valor > saldo){
+						contaEspecial(valor)
+					}
+					senao{
+						debito(valor)	
+					}
+					
 				} senao se(operacao == 'C' ou operacao == 'c') {
 					escreva("Creditar: R$")
 					leia(valor)
@@ -282,7 +318,10 @@ programa
 					contaEstudantil()
 				}
 				//===== Fim conta Estudantil ====	
+				// contaEspecial
 				
+
+				//contaEspecial
 				se (contadorOperacoes >= 10){
 					limpa()
 					logo()
@@ -295,14 +334,14 @@ programa
 				leia(continuar)
 	
 			}
-	
+			
 				
 			// ==== Conta Corrente ====
 			se (codigo == 2){
 				contaCorrente()
 			}
 			// ==== Fim Corrente ====
-
+			
 			limpa()
 			escreva ("Saindo da Conta...\n")
 			Util.aguarde(2000)
@@ -319,7 +358,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3284; 
+ * @POSICAO-CURSOR = 7020; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
