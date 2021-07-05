@@ -77,63 +77,30 @@ programa
 	
 	// ======== Conta Poupança ========
 	
-	const inteiro DIAANIVERSARIOPOUPANCA = 37 //A data está no formato Dia/Mes
-
-	funcao cadeia conversaoDiaMesAniversario (){ //Essa função é responsável por converter a data de aniversário para o tipo cadeia
-		cadeia diaAniversarioPoupancaTexto 
-		cadeia diaAniversarioTexto, mesAniversarioTexto
-		
-		diaAniversarioPoupancaTexto = Tipos.inteiro_para_cadeia(DIAANIVERSARIOPOUPANCA, 10)
-		
-		se(Texto.numero_caracteres(diaAniversarioPoupancaTexto) == 2){
-			caracter diaAniversario = Texto.obter_caracter(diaAniversarioPoupancaTexto, 0)
-			caracter mesAniversario = Texto.obter_caracter(diaAniversarioPoupancaTexto, 1)
-
-			diaAniversarioTexto = "0" + Tipos.caracter_para_cadeia(diaAniversario)
-			mesAniversarioTexto = "0" + Tipos.caracter_para_cadeia(mesAniversario)
-			diaAniversarioPoupancaTexto = diaAniversarioTexto + "/" + mesAniversarioTexto
-
-			retorne diaAniversarioPoupancaTexto
-			
-		}senao{
-			caracter diaAniversario1 = Texto.obter_caracter(diaAniversarioPoupancaTexto, 0)
-			caracter diaAniversario2 = Texto.obter_caracter(diaAniversarioPoupancaTexto, 1)
-			caracter mesAniversario1 = Texto.obter_caracter(diaAniversarioPoupancaTexto, 2)
-			caracter mesAniversario2 = Texto.obter_caracter(diaAniversarioPoupancaTexto, 3)
-
-			diaAniversarioTexto = Tipos.caracter_para_cadeia(diaAniversario1) + Tipos.caracter_para_cadeia(diaAniversario2 )
-			mesAniversarioTexto = Tipos.caracter_para_cadeia(mesAniversario1) + Tipos.caracter_para_cadeia(mesAniversario2)
-			diaAniversarioPoupancaTexto = diaAniversarioTexto + "/" + mesAniversarioTexto
-
-			retorne diaAniversarioPoupancaTexto
-			
-		}
-		
-	}
+	const inteiro DIAANIVERSARIOPOUPANCA = 7 //Aniversário da conta
 	
 	funcao contaPoupanca(){
-		cadeia dataDigita
-		inteiro numeroCaracteres
+		inteiro dataDigita
 		logico Verdade = verdadeiro
 
 		enquanto(Verdade){
-			escreva("Informe a data [DD/MM]: ")
+			escreva("Informe o dia: ")
 			leia(dataDigita)
 		
-			numeroCaracteres = Texto.numero_caracteres(dataDigita)
-		
-			se(numeroCaracteres == 5 e Texto.obter_caracter(dataDigita, 2) == '/'){
-				se(dataDigita == conversaoDiaMesAniversario()){
-					saldo = saldo + 0.05 * saldo
-					
-				}
+			//numeroCaracteres = Texto.numero_caracteres(dataDigita)
+			se(dataDigita <= 0 ou dataDigita > 31){
+				escreva("Dia inválido!\n")
+				Util.aguarde(1500)
 				
+			}senao se(dataDigita == DIAANIVERSARIOPOUPANCA){
+				saldo = saldo + 0.05 * saldo
+				escreva("Hoje é o aniversário da sua conta. Saldo corrigido para R$", saldo, ".\n")
 				mostrarSaldo()
 				pare
-			
+				
 			}senao{
-				escreva("\nEntrada inválida! Por favor, informe uma entrada válida.\n\n")
-				Util.aguarde(1500)
+				mostrarSaldo()
+				pare
 				
 			}
 			
@@ -428,7 +395,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3364; 
+ * @POSICAO-CURSOR = 1482; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
