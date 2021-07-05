@@ -42,10 +42,18 @@ programa
 	}
 
 	funcao debito(real valor) {
-		se (valor <= saldo) {
+		se(valor <= 0){
+			
+			escreva("Valor inválido.\n")
+			
+		}
+		
+		senao se (valor <= saldo) {
+			
 			saldo -= valor
 			
 		} senao {
+			
 			escreva("Saldo insuficiente.\n")
 			
 		}
@@ -53,7 +61,15 @@ programa
 	}
 	
 	funcao credito(real valor) {
+
+		se(valor <= 0){
+			
+			escreva("Valor inválido.\n")
+			
+		} senao {
 		saldo += valor
+		
+		}
 		
 	}
 	
@@ -108,7 +124,7 @@ programa
 		
 			se(numeroCaracteres == 5 e Texto.obter_caracter(dataDigita, 2) == '/'){
 				se(dataDigita == conversaoDiaMesAniversario()){
-					saldo = saldo + 0.05*saldo
+					saldo = saldo + 0.05 * saldo
 					
 				}
 				
@@ -198,7 +214,9 @@ programa
 	
 		se(valor <= saldo + limiteEspecial){
 			escreva("Utilizando " + (valor - saldo) + " do limite especial.\n")
-			limiteEspecial-=(valor - saldo)
+			se (valor > 0){
+				limiteEspecial-=(valor - saldo)
+			}
 			debito(saldo)
 			
 		}
@@ -227,9 +245,10 @@ programa
 			leia(valorEmprestimo)
 			
 			se (valorEmprestimo <= valorMaximo) {
-				saldo += valorEmprestimo
-				valorMaximo -= valorEmprestimo
-				
+				credito(valorEmprestimo)
+				se (valorEmprestimo > 0){
+					valorMaximo -= valorEmprestimo
+				}
 			} senao {
 				escreva("Valor invalido. Emprestimo não concluido.\n")
 				
@@ -259,9 +278,10 @@ programa
 		leia(valorSolicitado)
 		
 		se (valorSolicitado <= valorMaximoEstudantil) {
-			saldo += valorSolicitado
-			valorMaximoEstudantil -= valorSolicitado
-			
+			credito(valorSolicitado)
+			se ( valorSolicitado > 0){
+				valorMaximoEstudantil -= valorSolicitado
+			}
 		} senao {
 			escreva("Valor invalido. Emprestimo não concluido.\n")
 			escreva("Caro estudante, o valor solicitado é maior que o disponivel.\n")
@@ -319,7 +339,7 @@ programa
 					escreva("Debitar: R$")
 					leia(valor)
 					
-					se (codigo ==3 e valor > saldo){
+					se (codigo == 3 e valor > saldo){
 						contaEspecial(valor)
 						
 					}senao{
@@ -408,7 +428,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 7380; 
+ * @POSICAO-CURSOR = 3364; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
