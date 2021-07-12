@@ -3,7 +3,7 @@ package contas;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Conta {
+public abstract class Conta {
 	
 	private double saldo;
 	private int numeroConta;
