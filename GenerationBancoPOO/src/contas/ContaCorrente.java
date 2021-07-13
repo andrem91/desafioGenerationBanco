@@ -6,7 +6,7 @@ public class ContaCorrente extends Conta {
 	private int taloes;
 	private final double PRECO_TALAO = 30.0;
 	
-	public ContaCorrente(int numeroConta, String nomeCliente) {
+	public ContaCorrente(String numeroConta, String nomeCliente) {
 		super(numeroConta, nomeCliente);
 		// TODO Auto-generated constructor stub
 	}

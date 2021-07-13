@@ -6,13 +6,13 @@ import java.util.Map;
 public abstract class Conta {
 	
 	private double saldo;
-	private int numeroConta;
+	private String numeroConta;
 	private String nomeCliente;
 	
 	/*Quando aprendermos collections, armazenar as operações em uma coleção para exibir no metodo*/
 	
 	
-	public Conta(int numeroConta, String nomeCliente) {
+	public Conta(String numeroConta, String nomeCliente) {
 		super();
 		this.numeroConta = numeroConta;
 		this.nomeCliente = nomeCliente;
@@ -22,7 +22,7 @@ public abstract class Conta {
 		return saldo;
 	}
 
-	public int getNumeroConta() {
+	public String getNumeroConta() {
 		return numeroConta;
 	}
 
