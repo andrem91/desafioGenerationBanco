@@ -6,7 +6,6 @@ public class ContaPoupanca extends Conta{
 
 	public ContaPoupanca(String numeroConta, String nomeCliente, int diaAniversarioPoupanca) {
 		super(numeroConta, nomeCliente);
-		this.diaAniversarioPoupanca = diaAniversarioPoupanca;
 	}
 
 	public int getDiaAniversarioPoupanca() {
@@ -17,9 +16,11 @@ public class ContaPoupanca extends Conta{
 		if(dataDigitada <= 0 || dataDigitada > 31){
 			System.out.println("Dia inválido!");
 		}else if(dataDigitada == this.diaAniversarioPoupanca){
-			this.saldo = this.saldo + 0.05*this.saldo;
-			System.out.println("Hoje é o aniversário da sua conta. Saldo corrigido para R$" + this.saldo);
-			System.out.println("Saldo Atual: " + super.getSaldo());
+			double saldo, ajuste;
+			saldo = super.getSaldo();
+			ajuste = 0.05*super.getSaldo();
+			System.out.println("Hoje é o aniversário da sua conta. Saldo corrigido para R$" + (saldo + ajuste));
+			System.out.println("Saldo Atual: " + super.credito(ajuste));
 		}else{
 			System.out.println("Saldo Atual: " + super.getSaldo());
 		}
