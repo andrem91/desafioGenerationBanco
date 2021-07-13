@@ -25,7 +25,7 @@ public class ContaCorrente extends Conta {
 		this.taloes = taloes;
 	}
 	
-	/*Super método, dividir*/
+	
 	public void pedirTalao(char escolha) {
 		
 		if (escolha == 'S' && podePedirTalao()){
