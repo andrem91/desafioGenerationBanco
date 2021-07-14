@@ -52,7 +52,7 @@ public abstract class Conta {
 			System.out.println("Valor inválido");
 		} else if (valor <= saldo) {
 			saldo -= valor;
-			extrato.add("Débito:\tR$ " + valor);
+			extrato.add("Débito:\tR$ -" + valor);
 		} else {
 			System.out.println("Saldo Insulficiente");
 		}

@@ -31,7 +31,7 @@ public class ContaEmpresarial extends Conta {
 	}
 
 	public void realizarEmpresitmo() {
-		System.out.println("Você tem R$" + valorMaximo + " liberados para emprestrimo.");
+		System.out.println("Você tem R$ " + valorMaximo + " liberados para emprestrimo.");
 		System.out.print("Deseja utilizar(S/N)? ");
 		aceitarEmprestimo = ler.next().charAt(0);
 
@@ -48,6 +48,5 @@ public class ContaEmpresarial extends Conta {
 				System.out.println("Valor invalido. Emprestimo não concluido.");
 			}
 		}
-		super.mostrarSaldo();
 	}
 }

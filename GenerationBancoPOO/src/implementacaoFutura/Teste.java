@@ -1,9 +1,9 @@
-package teste;
+package implementacaoFutura;
 
 import java.util.Locale;
 import java.util.Scanner;
-import etc.Banco;
-import etc.Cadastro;
+
+import menu.Banco;
 
 public class Teste {
 	public static void main(String[] args) {

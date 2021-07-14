@@ -1,6 +1,6 @@
 /*Classe para e acessar as contas*/
 
-package etc;
+package implementacaoFutura;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

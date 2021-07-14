@@ -18,34 +18,32 @@ public class ContaEspecial extends Conta {
 	}
 
 	@Override
-		public void debito (double valor) {
-			if (valor <= 0) {
-				System.out.println("Valor inválido");
-			} else if (valor <= saldo) {
-			 System.out.println("");
-			
-			 double saldo; 
-			 saldo = super.getSaldo();
-			 
-			 	saldo -= valor;
-			 	super.debito(valor);
-				
-				
-			} 
-			else if(valor <= getSaldo() + getlimiteEspecial()) {
-				System.out.println("Saldo em conta insuficiente para realizar a operação.");
-				System.out.println("Utilizando " + (valor - getSaldo()) + " do limite especial.");
-				if(valor > 0)
-				{
-					limiteEspecial -=(valor - getSaldo());
-					super.debito(getSaldo());	
-			}
-				else {
-					System.out.println("Seu limite é insuficiente");
+	public void debito(double valor) {
+		if (valor <= 0) {
+			System.out.println("Valor inválido");
+		} else if (valor <= saldo) {
+			System.out.println("");
+
+			double saldo;
+			saldo = super.getSaldo();
+
+			saldo -= valor;
+			super.debito(valor);
+
+		} else if (valor <= getSaldo() + getlimiteEspecial()) {
+			System.out.println("Saldo em conta insuficiente para realizar a operação.");
+			System.out.println("Utilizando " + (valor - getSaldo()) + " do limite especial.");
+			if (valor > 0) {
+				limiteEspecial -= (valor - getSaldo());
+				if (getSaldo() > 0) {
+					super.debito(getSaldo());
 				}
+			} else {
+				System.out.println("Seu limite é insuficiente");
 			}
-			System.out.println("Seu limite atual é R$: " + getlimiteEspecial());
-			realizarOperacao();
-			}
-			
+		}
+		System.out.println("Seu limite atual é R$: " + getlimiteEspecial());
+		realizarOperacao();
+	}
+
 }

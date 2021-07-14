@@ -25,12 +25,12 @@ public class ContaEstudantil extends Conta {
 	public void menuEmprestimo() {
 		double valorSolicitado = 0;
 		char usarEmprestimo;
-		System.out.println("Caro estudante, você tem R$" + valorMaximoEstudantil + "liberados para emprestimo.");
+		System.out.println("Caro estudante, você tem R$ " + valorMaximoEstudantil + " liberados para emprestimo.");
 		System.out.println("Deseja utilizar(S/N)?: ");
 		usarEmprestimo = read.next().toUpperCase().charAt(0);
 
 		if (usarEmprestimo == 'S') {
-			System.out.println("Valor do emprestimo: R$");
+			System.out.println("Valor do emprestimo: R$ ");
 			valorSolicitado = read.nextDouble();
 
 			if (valorSolicitado <= valorMaximoEstudantil) {

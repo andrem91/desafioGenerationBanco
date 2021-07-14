@@ -1,6 +1,5 @@
 package aplicacao;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -12,8 +11,7 @@ import contas.ContaEmpresarial;
 import contas.ContaEspecial;
 import contas.ContaEstudantil;
 import contas.ContaPoupanca;
-import etc.Banco;
-//import etc.Cadastro;
+import menu.Banco;
 
 public class principal {
 
@@ -31,8 +29,15 @@ public class principal {
 		
 		System.out.println("Bem-vinde, me diga seu nome: ");
 		nome = leitor.next().toUpperCase();
-		System.out.println("Digite o número da sua conta: ");
+		System.out.println("Digite o número da sua conta(5 dígitos): ");
+		
 		numeroConta = leitor.next();
+		while (numeroConta.length() != 5) {
+			System.out.println("Número de conta incorreto");
+			System.out.println("Digite o número da sua conta(5 dígitos): ");
+			numeroConta = leitor.next();
+		}
+		
 		ContaPoupanca contaPoupanca = new ContaPoupanca(numeroConta, nome);
 		ContaCorrente contaCorrente = new ContaCorrente(numeroConta, nome);
 		ContaEspecial contaEspecial = new ContaEspecial(numeroConta, nome);
@@ -47,11 +52,11 @@ public class principal {
 		contas.add(contaEstudantil);
 		
 		List<String> nomeDasContas = new ArrayList<>();
-		nomeDasContas.add("\nConta Poupança\n");
-		nomeDasContas.add("\nConta Corrente\n");
-		nomeDasContas.add("\nConta Especial\n");
-		nomeDasContas.add("\nConta Empresarial\n");
-		nomeDasContas.add("\nConta Estudantil\n");
+		nomeDasContas.add("\nCONTA POUPANÇA\n");
+		nomeDasContas.add("\nCONTA CORRENTE\n");
+		nomeDasContas.add("\nCONTA ESPECIAL\n");
+		nomeDasContas.add("\nCONTA EMPRESA\n");
+		nomeDasContas.add("\nCONTA ESTUDANTIL\n");
 		// programa
 		do {
 
@@ -81,6 +86,7 @@ public class principal {
 
 			// operações dentro da conta
 			do {
+				Banco.mostrarLogo();
 				System.out.println( nomeDasContas.get(escolha));
 				System.out.println("MOVIMENTO \nD-Débito \nC-Crédito \nE-Extrato ");
 				op = leitor.next().toUpperCase().charAt(0);
