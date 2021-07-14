@@ -98,12 +98,14 @@ public class principal {
 				 * 
 				 * // ===== Fim Conta Empresa =====
 				 * 
-				 * // ===== Inicio conta Estudantil ====
-				 * 
-				 * se(escolha == 5){ contaEstudantil().metodo()
-				 * 
-				 * }
-				 */
+			     *///===== Inicio conta Estudantil ====
+				 	
+				 	if (escolha == 4) { 
+				 	contaEstudantil.menuEmprestimo();
+				 	}
+				 
+			
+				
 				// ===== Fim conta Estudantil ====
 
 				System.out.println("Continuar? (S/N)");
@@ -177,7 +179,8 @@ public class principal {
 		 * 
 		 * }
 		 */
-
+			
+		
 	}
-
+	
 }
