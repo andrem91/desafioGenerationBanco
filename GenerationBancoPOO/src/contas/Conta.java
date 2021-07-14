@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class Conta {
 	
-	private double saldo;
+	protected double saldo;
 	private String numeroConta;
 	private String nomeCliente;
 	private int contadorDeOperacoes;

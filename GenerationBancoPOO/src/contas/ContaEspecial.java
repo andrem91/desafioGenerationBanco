@@ -30,7 +30,6 @@ public class ContaEspecial extends Conta {
 			 	saldo -= valor;
 			 	super.debito(valor);
 				
-				
 			} 
 			else if(valor <= getSaldo() + getlimiteEspecial()) {
 				System.out.println("Saldo em conta insuficiente para realizar a operação.");
