@@ -96,7 +96,6 @@ public class principal {
 
 				// ==== Conta Poupança ====
 				
-				
 				if(escolha == 0) {
 					while(true){
 						if(valor > 0 && op != 'E' && contaPoupanca.getSaldo() >= valor ) {
@@ -131,12 +130,10 @@ public class principal {
 				 * 
 			     *///===== Inicio conta Estudantil ====
 				 	
-				 	if (escolha == 4) { 
-				 	contaEstudantil.menuEmprestimo();
-				 	}
-				 
+			 	if (escolha == 4) { 
+			 		contaEstudantil.menuEmprestimo();
+			 	}
 			
-				
 				// ===== Fim conta Estudantil ====
 
 				System.out.println("Continuar? (S/N)");
@@ -147,7 +144,6 @@ public class principal {
 					op = leitor.next().toUpperCase().charAt(0);
 				}
 			} while (op == 'S' && contas.get(escolha).getContadorDeOperacoes() < 10);
-
 			
 			  // ==== Conta Corrente ====
 			 if (escolha == 1 && contaCorrente.podePedirTalao()){
@@ -160,13 +156,9 @@ public class principal {
 					 System.out.println("Gostaria de comprar um talão de cheque?");
 					 pedirTalao = leitor.next().toUpperCase().charAt(0);
 					 contaCorrente.pedirTalao(pedirTalao); 
-				 }
-			 // ==== Fim Corrente ==== 
-					 
-			 }
-			 		
-			
-
+			}
+			 // ==== Fim Corrente ==== 	 
+			}
 		} while (true);
 		
 		Banco.despedida();
