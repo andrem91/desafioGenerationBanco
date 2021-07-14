@@ -5,7 +5,7 @@ import java.util.Map;
 
 public abstract class Conta {
 	
-	protected double saldo;
+	private double saldo;
 	private String numeroConta;
 	private String nomeCliente;
 	
