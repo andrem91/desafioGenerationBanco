@@ -1,7 +1,9 @@
 package aplicacao;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 import contas.Conta;
@@ -18,16 +20,24 @@ public class principal {
 	public static void main(String[] args) {
 
 		Scanner leitor = new Scanner(System.in);
-
-		char op;
-		double valor;
-		int escolha;
+		Locale.setDefault(Locale.US);
 		
-		ContaPoupanca contaPoupanca = new ContaPoupanca("4564646", "José", 13);
-		ContaCorrente contaCorrente = new ContaCorrente("dasdsa", "Caio");
-		ContaEspecial contaEspecial = new ContaEspecial("456465", "Leo");
-		ContaEmpresarial contaEmpresa = new ContaEmpresarial("4654486", "Andé");
-		ContaEstudantil contaEstudantil = new ContaEstudantil("7985135", "Vic");
+		char op;
+		double valor = 0;
+		int escolha;
+		String nome, numeroConta;
+		
+		Banco.mostrarLogo();
+		
+		System.out.println("Bem-vinde, me diga seu nome: ");
+		nome = leitor.next();
+		System.out.println("Digite o número da sua conta: ");
+		numeroConta = leitor.next();
+		ContaPoupanca contaPoupanca = new ContaPoupanca(numeroConta, nome);
+		ContaCorrente contaCorrente = new ContaCorrente(numeroConta, nome);
+		ContaEspecial contaEspecial = new ContaEspecial(numeroConta, nome);
+		ContaEmpresarial contaEmpresa = new ContaEmpresarial(numeroConta, nome);
+		ContaEstudantil contaEstudantil = new ContaEstudantil(numeroConta, nome);
 
 		List<Conta> contas = new ArrayList<>();
 		contas.add(contaPoupanca);
@@ -41,6 +51,7 @@ public class principal {
 			// validar escolha do menu
 			do {
 				Banco.mostrarLogo();
+				System.out.println("Olá, " + nome + " seja bem vinde");
 				System.out.println("1 - CONTA POUPANÇA");
 				System.out.println("2 - CONTA CORRENTE");
 				System.out.println("3 - CONTA ESPECIAL");
@@ -84,13 +95,32 @@ public class principal {
 				}
 
 				// ==== Conta Poupança ====
-				/*
-				 * if(escolha == 1) { contaPoupanca.ajustarSaldo(escolha); }
-				 * 
-				 * // ==== Fim Poupança ====
-				 * 
-				 * 
-				 * // ===== Inicio Conta Empresa =====
+				
+				if(escolha == 0) {
+					while(true){
+						if(valor > 0 && op != 'E' && contaPoupanca.getSaldo() >= valor ) {
+							int dataDigitada;
+							System.out.print("Informe o dia: ");
+							dataDigitada = leitor.nextInt();
+							
+							if(dataDigitada <= 0 || dataDigitada > 31){
+					            System.out.println("Dia inválido!");
+					        }else if(dataDigitada == contaPoupanca.getDiaAniversarioPoupanca()){
+					        	contaPoupanca.ajustarSaldo(); 
+					        	break;
+					        }else{
+					            contaPoupanca.mostrarSaldo();
+					            break;
+					        }
+						}else {
+							break;
+						}
+					}
+				}
+				 // ==== Fim Poupança ====
+				 
+				 
+				 /* // ===== Inicio Conta Empresa =====
 				 * 
 				 * se(escolha == 4) { contaEmpresa().metodo()
 				 * 
@@ -98,12 +128,12 @@ public class principal {
 				 * 
 				 * // ===== Fim Conta Empresa =====
 				 * 
-				 * // ===== Inicio conta Estudantil ====
-				 * 
-				 * se(escolha == 5){ contaEstudantil().metodo()
-				 * 
-				 * }
-				 */
+			     *///===== Inicio conta Estudantil ====
+				 	
+			 	if (escolha == 4) { 
+			 		contaEstudantil.menuEmprestimo();
+			 	}
+			
 				// ===== Fim conta Estudantil ====
 
 				System.out.println("Continuar? (S/N)");
@@ -114,23 +144,25 @@ public class principal {
 					op = leitor.next().toUpperCase().charAt(0);
 				}
 			} while (op == 'S' && contas.get(escolha).getContadorDeOperacoes() < 10);
-
-			/*
-			 * // ==== Conta Corrente ====
-			 * 
-			 * if (escolha == 2){ //mostrarSaldo
-			 * System.out.println("Gostaria de comprar uma talão de cheque?");
-			 * contaCorrente.pedirTalao(leitor.next().toUpperCase().charAt(0)); // ==== Fim
-			 * Corrente ==== }
-			 * 
-			 * 
-			 * 
-			 */
 			
-			Banco.despedida();
-
+			  // ==== Conta Corrente ====
+			 if (escolha == 1 && contaCorrente.podePedirTalao()){
+				 char pedirTalao = 'S';
+				 while (pedirTalao == 'S' && contaCorrente.podePedirTalao()) {
+					 pedirTalao = 'N';
+					 System.out.println("\nTALÕES DE CHEQUE\n");
+					 System.out.println("\nTalões pedidos: " + contaCorrente.getTaloes() + "\nlimites de talão no mês: " + contaCorrente.getMAXIMO_TALOES());
+					 System.out.println("\nCusto: R$" + contaCorrente.getPRECO_TALAO());
+					 System.out.println("Gostaria de comprar um talão de cheque?");
+					 pedirTalao = leitor.next().toUpperCase().charAt(0);
+					 contaCorrente.pedirTalao(pedirTalao); 
+			}
+			 // ==== Fim Corrente ==== 	 
+			}
 		} while (true);
-
+		
+		Banco.despedida();
+		
 		// versão com cadastro, decidir se vai ficar
 		/*
 		 * Cadastro cadastrador = new Cadastro(); loopTotal: while (true) { int escolha
@@ -170,7 +202,8 @@ public class principal {
 		 * 
 		 * }
 		 */
-
+			
+		
 	}
-
+	
 }

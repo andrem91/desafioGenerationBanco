@@ -57,12 +57,10 @@ public abstract class Conta {
 			System.out.println("Saldo Insulficiente");
 		}
 		realizarOperacao();
-		
-		
 	}
 	
 	public void mostrarSaldo () {
-		System.out.println("Saldo atual: R$" + this.getSaldo());
+		System.out.println("Saldo atual: R$ " + this.getSaldo());
 	}
 	
 	/*A fazer quando entendermos direito collections, ira armazenar as operações para exibir*/
