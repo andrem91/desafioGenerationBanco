@@ -34,7 +34,7 @@ public class ContaCorrente extends Conta {
 				super.debito(getPRECO_TALAO());
 				System.out.println ("Debitando em conta...");
 				System.out.println ("Compra finalizada");
-				
+				super.mostrarSaldo();
 		}
 	}
 	

@@ -115,22 +115,29 @@ public class principal {
 				}
 			} while (op == 'S' && contas.get(escolha).getContadorDeOperacoes() < 10);
 
-			/*
-			 * // ==== Conta Corrente ====
-			 * 
-			 * if (escolha == 2){ //mostrarSaldo
-			 * System.out.println("Gostaria de comprar uma talão de cheque?");
-			 * contaCorrente.pedirTalao(leitor.next().toUpperCase().charAt(0)); // ==== Fim
-			 * Corrente ==== }
-			 * 
-			 * 
-			 * 
-			 */
 			
-			Banco.despedida();
+			  // ==== Conta Corrente ====
+			 if (escolha == 1 && contaCorrente.podePedirTalao()){
+				 char pedirTalao = 'S';
+				 while (pedirTalao == 'S' && contaCorrente.podePedirTalao()) {
+					 pedirTalao = 'N';
+					 System.out.println("\nTALÕES DE CHEQUE\n");
+					 System.out.println("\nTalões pedidos: " + contaCorrente.getTaloes() + "\nlimites de talão no mês: " + contaCorrente.getMAXIMO_TALOES());
+					 System.out.println("\nCusto: R$" + contaCorrente.getPRECO_TALAO());
+					 System.out.println("Gostaria de comprar um talão de cheque?");
+					 pedirTalao = leitor.next().toUpperCase().charAt(0);
+					 contaCorrente.pedirTalao(pedirTalao); 
+				 }
+			 // ==== Fim Corrente ==== 
+					 
+			 }
+			 		
+			
 
 		} while (true);
-
+		
+		Banco.despedida();
+		
 		// versão com cadastro, decidir se vai ficar
 		/*
 		 * Cadastro cadastrador = new Cadastro(); loopTotal: while (true) { int escolha
