@@ -9,10 +9,9 @@ public class ContaEstudantil extends Conta {
 	private double valorMaximoEstudantil = 5000.00;
 	private char usarEmprestimo;
 
-	public ContaEstudantil(String numeroConta, String nomeCliente, double valorMaximoEstudantil, double valorSolicitado,
-			char usarEmprestimo) {
+	public ContaEstudantil(String numeroConta, String nomeCliente) {
 		super(numeroConta, nomeCliente);
-		this.usarEmprestimo = usarEmprestimo;
+		
 
 	}
 
