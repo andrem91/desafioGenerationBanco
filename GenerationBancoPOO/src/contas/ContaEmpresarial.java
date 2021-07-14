@@ -38,15 +38,15 @@ public class ContaEmpresarial extends Conta {
 		if (aceitarEmprestimo == 'S' || aceitarEmprestimo == 's') {
 			System.out.print("Valor do emprestimo: R$");
 			valorEmprestimo = ler.nextDouble();
-		}
 
-		if (valorEmprestimo <= valorMaximo) {
-			super.credito(valorEmprestimo);
-			if (valorEmprestimo > 0) {
-				valorMaximo -= valorEmprestimo;
+			if (valorEmprestimo <= valorMaximo) {
+				super.credito(valorEmprestimo);
+				if (valorEmprestimo > 0) {
+					valorMaximo -= valorEmprestimo;
+				}
+			} else {
+				System.out.println("Valor invalido. Emprestimo não concluido.");
 			}
-		} else {
-			System.out.println("Valor invalido. Emprestimo não concluido.");
 		}
 		super.mostrarSaldo();
 	}

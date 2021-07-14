@@ -32,13 +32,12 @@ public class Cadastro {
 	
 	private Cadastro cadastrarContas(String numeroConta, String nome) {
 		
+		cadastroDeContas.add(new ContaPoupanca(numeroConta, nome));
 		cadastroDeContas.add(new ContaCorrente(numeroConta, nome));
-		/*
-		cadastroDeContas.add(ContaPoupanca(numeroConta, nome));
-		cadastroDeContas.add(ContaEmpresarial(numeroConta, nome));
-		cadastroDeContas.add(ContaEspecial(numeroConta, nome));
-		cadastroDeContas.add(ContaEstudantil(numeroConta, nome));
-		*/
+		cadastroDeContas.add(new ContaEspecial(numeroConta, nome));
+		cadastroDeContas.add(new ContaEmpresarial(numeroConta, nome));
+		cadastroDeContas.add(new ContaEstudantil(numeroConta, nome));
+		
 		return this;
 	}
 	
@@ -90,31 +89,33 @@ public class Cadastro {
 		return null;
 	}
 	
+	
 	public static Conta acessarConta(String numeroConta, int index) {
 		
 		return acessarCadastro(numeroConta).cadastroDeContas.get(index);
 	}
-	/*
+	
+	
 	public static ContaPoupanca acessarContaPoupanca(String numeroConta) {
 		return (ContaPoupanca) acessarCadastro(numeroConta).cadastroDeContas.get(0);
 	}
-	*/
+	
 	public static ContaCorrente acessarContaCorrente(String numeroConta) {
 		return (ContaCorrente) acessarCadastro(numeroConta).cadastroDeContas.get(1);
 	}
 	
-	/*
+	
 	public static ContaEspecial acessarContaEspecial(String numeroConta) {
 		return (ContaEspecial) acessarCadastro(numeroConta).cadastroDeContas.get(2);
 	}
 	
-	public static ContaEmpresa acessarContaEmpresa(String numeroConta) {
-		return (ContaEmpresa) acessarCadastro(numeroConta).cadastroDeContas.get(3);
+	public static ContaEmpresarial acessarContaEmpresa(String numeroConta) {
+		return (ContaEmpresarial) acessarCadastro(numeroConta).cadastroDeContas.get(3);
 	}
 	
 	public static ContaEstudantil acessarContaEstudantil(String numeroConta) {
 		return (ContaEstudantil) acessarCadastro(numeroConta).cadastroDeContas.get(4);
 	}
 	
-	*/
+	
 }

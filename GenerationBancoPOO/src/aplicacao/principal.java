@@ -30,7 +30,7 @@ public class principal {
 		Banco.mostrarLogo();
 		
 		System.out.println("Bem-vinde, me diga seu nome: ");
-		nome = leitor.next();
+		nome = leitor.next().toUpperCase();
 		System.out.println("Digite o número da sua conta: ");
 		numeroConta = leitor.next();
 		ContaPoupanca contaPoupanca = new ContaPoupanca(numeroConta, nome);
@@ -38,13 +38,20 @@ public class principal {
 		ContaEspecial contaEspecial = new ContaEspecial(numeroConta, nome);
 		ContaEmpresarial contaEmpresa = new ContaEmpresarial(numeroConta, nome);
 		ContaEstudantil contaEstudantil = new ContaEstudantil(numeroConta, nome);
-
+		
 		List<Conta> contas = new ArrayList<>();
 		contas.add(contaPoupanca);
 		contas.add(contaCorrente);
 		contas.add(contaEspecial);
 		contas.add(contaEmpresa);
 		contas.add(contaEstudantil);
+		
+		List<String> nomeDasContas = new ArrayList<>();
+		nomeDasContas.add("\nConta Poupança\n");
+		nomeDasContas.add("\nConta Corrente\n");
+		nomeDasContas.add("\nConta Especial\n");
+		nomeDasContas.add("\nConta Empresarial\n");
+		nomeDasContas.add("\nConta Estudantil\n");
 		// programa
 		do {
 
@@ -73,9 +80,9 @@ public class principal {
 			escolha--;
 
 			// operações dentro da conta
-
 			do {
-				System.out.println("MOVIMENTO \nD-debito \nC-Crédito \nE-Extrato ");
+				System.out.println( nomeDasContas.get(escolha));
+				System.out.println("MOVIMENTO \nD-Débito \nC-Crédito \nE-Extrato ");
 				op = leitor.next().toUpperCase().charAt(0);
 
 				if (op == 'D') {
@@ -153,56 +160,15 @@ public class principal {
 					 System.out.println("\nTALÕES DE CHEQUE\n");
 					 System.out.println("\nTalões pedidos: " + contaCorrente.getTaloes() + "\nlimites de talão no mês: " + contaCorrente.getMAXIMO_TALOES());
 					 System.out.println("\nCusto: R$" + contaCorrente.getPRECO_TALAO());
-					 System.out.println("Gostaria de comprar um talão de cheque?");
+					 System.out.println("Gostaria de comprar um talão de cheque?(S/N)");
 					 pedirTalao = leitor.next().toUpperCase().charAt(0);
 					 contaCorrente.pedirTalao(pedirTalao); 
-			}
+				 }
 			 // ==== Fim Corrente ==== 	 
 			}
 		} while (true);
 		
 		Banco.despedida();
-		
-		// versão com cadastro, decidir se vai ficar
-		/*
-		 * Cadastro cadastrador = new Cadastro(); loopTotal: while (true) { int escolha
-		 * = 0; String numeroConta = ""; char op = 'S';
-		 * 
-		 * //Começo do bloco de entrar na conta System.out.
-		 * println("Digite a opção desejada\n1 - Acessar conta existente\n2 - Cadastrar nova conta\n3 - Sair"
-		 * ); escolha = leitor.nextInt();
-		 * 
-		 * if (escolha == 1) {
-		 * System.out.println("Por favor, digite o número e o dígito da sua conta: ");
-		 * numeroConta = leitor.next();
-		 * 
-		 * if (!Cadastro.temConta(numeroConta)) {
-		 * System.out.println("Não foi encontrado uma conta com o número " + numeroConta
-		 * + "\nDeseja cadastrar uma nova conta?(S/N)"); op =
-		 * leitor.next().toUpperCase().charAt(0);
-		 * 
-		 * if (op == 'S') { numeroConta = cadastrador.cadastrarUsuario();
-		 * 
-		 * } else { continue; } }
-		 * 
-		 * } else if (escolha == 2) { numeroConta = cadastrador.cadastrarUsuario();
-		 * 
-		 * } else if (escolha == 3) { break; } //Fim do bloco de entrar na conta
-		 * 
-		 * 
-		 * //Menu de contas System.out.println("Bem vindo " +
-		 * Cadastro.acessarConta(numeroConta, 0).getNomeCliente() +"\nConta "+
-		 * numeroConta +"\nSelecione a opção desejada:");
-		 * System.out.println("1 - CONTA POUPANÇA");
-		 * System.out.println("2 - CONTA CORRENTE");
-		 * System.out.println("3 - CONTA ESPECIAL");
-		 * System.out.println("4 - CONTA EMPRESA");
-		 * System.out.println("5 - CONTA ESTUDANTIL\n");
-		 * System.out.println("6 - Cancelar conta\n"); System.out.println("7 - Sair\n");
-		 * 
-		 * }
-		 */
-			
 		
 	}
 	
