@@ -120,15 +120,15 @@ public class principal {
 				 // ==== Fim Poupança ====
 				 
 				 
-				 /* // ===== Inicio Conta Empresa =====
-				 * 
-				 * se(escolha == 4) { contaEmpresa().metodo()
-				 * 
-				 * }
-				 * 
-				 * // ===== Fim Conta Empresa =====
-				 * 
-			     *///===== Inicio conta Estudantil ====
+				 // ===== Inicio Conta Empresa =====
+				 
+				 if (escolha == 3) {
+					 contaEmpresa.realizarEmpresitmo();
+				 }
+				 
+				 // ===== Fim Conta Empresa =====
+				 
+			    //===== Inicio conta Estudantil ====
 				 	
 			 	if (escolha == 4) { 
 			 		contaEstudantil.menuEmprestimo();
