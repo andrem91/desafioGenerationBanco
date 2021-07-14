@@ -22,12 +22,19 @@ public class principal {
 		char op;
 		double valor;
 		int escolha;
+		String nome, numeroConta;
 		
-		ContaPoupanca contaPoupanca = new ContaPoupanca("4564646", "José", 13);
-		ContaCorrente contaCorrente = new ContaCorrente("dasdsa", "Caio");
-		ContaEspecial contaEspecial = new ContaEspecial("456465", "Leo");
-		ContaEmpresarial contaEmpresa = new ContaEmpresarial("4654486", "Andé");
-		ContaEstudantil contaEstudantil = new ContaEstudantil("7985135", "Vic");
+		Banco.mostrarLogo();
+		
+		System.out.println("Bem-vinde, me diga seu nome: ");
+		nome = leitor.next();
+		System.out.println("Digite o número da sua conta: ");
+		numeroConta = leitor.next();
+		ContaPoupanca contaPoupanca = new ContaPoupanca(numeroConta, nome, 13);
+		ContaCorrente contaCorrente = new ContaCorrente(numeroConta, nome);
+		ContaEspecial contaEspecial = new ContaEspecial(numeroConta, nome);
+		ContaEmpresarial contaEmpresa = new ContaEmpresarial(numeroConta, nome);
+		ContaEstudantil contaEstudantil = new ContaEstudantil(numeroConta, nome);
 
 		List<Conta> contas = new ArrayList<>();
 		contas.add(contaPoupanca);
@@ -41,6 +48,7 @@ public class principal {
 			// validar escolha do menu
 			do {
 				Banco.mostrarLogo();
+				System.out.println("Olá, " + nome + " seja bem vinde");
 				System.out.println("1 - CONTA POUPANÇA");
 				System.out.println("2 - CONTA CORRENTE");
 				System.out.println("3 - CONTA ESPECIAL");
