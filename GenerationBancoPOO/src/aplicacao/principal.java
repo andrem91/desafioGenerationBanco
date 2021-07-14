@@ -1,7 +1,9 @@
 package aplicacao;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 import contas.Conta;
@@ -18,9 +20,10 @@ public class principal {
 	public static void main(String[] args) {
 
 		Scanner leitor = new Scanner(System.in);
-
+		Locale.setDefault(Locale.US);
+		
 		char op;
-		double valor;
+		double valor = 0;
 		int escolha;
 		String nome, numeroConta;
 		
@@ -92,13 +95,33 @@ public class principal {
 				}
 
 				// ==== Conta Poupança ====
-				/*
-				 * if(escolha == 1) { contaPoupanca.ajustarSaldo(escolha); }
-				 * 
-				 * // ==== Fim Poupança ====
-				 * 
-				 * 
-				 * // ===== Inicio Conta Empresa =====
+				
+				
+				if(escolha == 0) {
+					while(true){
+						if(valor > 0 && op != 'E' && contaPoupanca.getSaldo() >= valor ) {
+							int dataDigitada;
+							System.out.print("Informe o dia: ");
+							dataDigitada = leitor.nextInt();
+							
+							if(dataDigitada <= 0 || dataDigitada > 31){
+					            System.out.println("Dia inválido!");
+					        }else if(dataDigitada == contaPoupanca.getDiaAniversarioPoupanca()){
+					        	contaPoupanca.ajustarSaldo(); 
+					        	break;
+					        }else{
+					            contaPoupanca.mostrarSaldo();
+					            break;
+					        }
+						}else {
+							break;
+						}
+					}
+				}
+				 // ==== Fim Poupança ====
+				 
+				 
+				 /* // ===== Inicio Conta Empresa =====
 				 * 
 				 * se(escolha == 4) { contaEmpresa().metodo()
 				 * 
