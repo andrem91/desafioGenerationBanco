@@ -6,7 +6,7 @@ public class ContaPoupanca extends Conta{
 	
 	private int diaAniversarioPoupanca = 7;
 
-	public ContaPoupanca(String numeroConta, String nomeCliente, int diaAniversarioPoupanca) {
+	public ContaPoupanca(String numeroConta, String nomeCliente) {
 		super(numeroConta, nomeCliente);
 	}
 

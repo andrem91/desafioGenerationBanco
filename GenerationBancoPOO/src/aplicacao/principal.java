@@ -33,7 +33,7 @@ public class principal {
 		nome = leitor.next();
 		System.out.println("Digite o número da sua conta: ");
 		numeroConta = leitor.next();
-		ContaPoupanca contaPoupanca = new ContaPoupanca(numeroConta, nome, 13);
+		ContaPoupanca contaPoupanca = new ContaPoupanca(numeroConta, nome);
 		ContaCorrente contaCorrente = new ContaCorrente(numeroConta, nome);
 		ContaEspecial contaEspecial = new ContaEspecial(numeroConta, nome);
 		ContaEmpresarial contaEmpresa = new ContaEmpresarial(numeroConta, nome);
